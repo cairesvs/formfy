@@ -1,0 +1,15 @@
+Usage:
+
+  new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").done();
+
+Using select:
+
+  new Formfy().with.select("states", function(){
+    var selectfy = this;
+    selectfy.with.option("NY", "New York").option("LA","Los Angeles");
+  }).done();
+
+  new Formfy().with.select("states", function(){
+    var selectfy = this;
+    selectfy.with.options({ value : "NY", text : "New York"}, {value : "CA", text : "California", selected : "selected" });
+  }).done();

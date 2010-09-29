@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Sample</title>
+     <script type="text/javascript" charset="utf-8" src="../formfy.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+        var form = new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").done();
+        document.body.appendChild(form);
+        var form2 = new Formfy().with.select("states", function(){
+                        var selectfy = this;
+                        selectfy.with.option("NY", "New York").option("LA","Los Angeles");
+                    }).done();
+        document.body.appendChild(form2);
+
+        var form3 = new Formfy().with.select("states", function(){
+                      var selectfy = this;
+                      selectfy.with.options({ value : "NY", text : "New York"}, {value : "CA", text : "California", selected : "selected" });
+                    }).done();
+        document.body.appendChild(form3);
+    </script>
+  </body>
+</html> 

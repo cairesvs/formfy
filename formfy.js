@@ -80,16 +80,17 @@ function Selectfy(name){
 	
 	this.with = {
 		options : function(){
+      console.log(arguments)
 			for (var i = 0; i < arguments.length; i++){
 				var arg = arguments[i];
-				this.option(arg);
+				this.option(arg, arg['text']);
 			}
 			return this;
 		},
-		option : function(value,text){
+		option : function(value, text){
 			var arg = typeof value == "string" ? { value :  value} : value;
 			var option = document.createElement('option');
-			option.appendChild(document.createTextNode(text));
+      option.appendChild(document.createTextNode(text));
 			for(var attribute in arg){
 				option.setAttribute(attribute, arg[attribute]);
 			}
