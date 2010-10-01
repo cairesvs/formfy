@@ -2,12 +2,13 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Sample</title>
-     <script type="text/javascript" charset="utf-8" src="../formfy.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../formfy.js"></script>
   </head>
   <body>
     <script type="text/javascript" charset="utf-8">
-        var form = new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").done();
+        var form = new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").radio("tea", "Macoto").done();
         document.body.appendChild(form);
+
         var form2 = new Formfy().with.select("states", function(){
                         var selectfy = this;
                         selectfy.with.option("NY", "New York").option("LA","Los Angeles");
@@ -19,6 +20,10 @@
                       selectfy.with.options({ value : "NY", text : "New York"}, {value : "CA", text : "California", selected : "selected" });
                     }).done();
         document.body.appendChild(form3);
+
+        var form4 = new Formfy().with.action("/resource").post().inputs({type: 'text', value: 'Username', id: 'username'} , {type: 'password', id: 'password'}).done();
+        document.body.appendChild(form4);
+
     </script>
   </body>
 </html> 

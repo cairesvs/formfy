@@ -2,6 +2,9 @@ Usage:
 
   new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").done();
 
+Using multiple inputs:
+  new Formfy().with.action("/resource").post().inputs({type: 'text', value: 'Username', id: 'username'} , {type: 'password', id: 'password'}).done();
+
 Using select:
 
   new Formfy().with.select("states", function(){
