@@ -1,30 +1,23 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Sample</title>
-    <script type="text/javascript" charset="utf-8" src="../formfy.js"></script>
+    <title>Sample2</title>
+     <script type="text/javascript" charset="utf-8" src="../formfy.js"></script>
+     <p id="first">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     <p id="second">Fork</p>
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-        var form = new Formfy().with.action("/my/resource").method("get").text("login").password("password").password("password_confirmation").radio("tea", "Macoto").done();
-        document.body.appendChild(form);
-
-        var form2 = new Formfy().with.select("states", function(){
-                        var selectfy = this;
-                        selectfy.with.option("NY", "New York").option("LA","Los Angeles");
-                    }).done();
-        document.body.appendChild(form2);
-
-        var form3 = new Formfy().with.select("states", function(){
-                      var selectfy = this;
-                      selectfy.with.options({ value : "NY", text : "New York"}, {value : "CA", text : "California", selected : "selected" });
-                    }).done();
-        document.body.appendChild(form3);
-
-        var form4 = new Formfy().with.action("/resource").post().inputs({type: 'text', value: 'Username', id: 'username'} , {type: 'password', id: 'password'}).done();
-        document.body.appendChild(form4);
-
-
-    </script>
+    
+  <script type="text/javascript" charset="utf-8">
+    var first = document.getElementById("first").innerHTML;
+    var second = document.getElementById("second").innerHTML;
+    with(Formfy.create()){
+      the("action", "action")
+      the("method", "get")
+      has(input("user","login"))
+      has(inputs("user",first, "pass",second))
+      done();
+    }    
+  </script>
   </body>
-</html> 
+</html>
