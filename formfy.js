@@ -1,9 +1,11 @@
 function Formfy(){
   var form = document.createElement("form");
+  form.style.display = 'none';
+
   this.with = {
     attribute : function(name, value){
       form.setAttribute(name, value);
-      return this
+      return this;
     },
     action : function(action){
       this.attribute("action", action);
@@ -20,6 +22,24 @@ function Formfy(){
     post: function(){
       this.attribute("method","post");
       return this;
+    },
+    patch : function(){
+     return this.post().input({
+        type : "_method",
+        value : "patch"
+      });
+    },
+    put : function(){
+     return this.post().input({
+        type : "_method",
+        value : "put"
+      });
+    },
+    delete : function(){
+     return this.post().input({
+        type : "_method",
+        value : "delete"
+      });
     },
     id : function(id){
       this.attribute("id", id);
@@ -40,15 +60,15 @@ function Formfy(){
       }
       return this;
     },
-    text : function(name){
+    text : function(name, value){
       var skeleton = {
-        type: "text", name : name
+        type: "text", name : name, value : value || ''
       };
       return this.input(skeleton);
     },
-    checkbox : function(name){
+    checkbox : function(name, value){
       var skeleton = {
-        type: "checkbox", name : name
+        type: "checkbox", name : name, value : value || ''
       };
       return this.input(skeleton);
     },
@@ -58,9 +78,9 @@ function Formfy(){
       };
       return this.input(skeleton);
     },
-    password : function(name){
+    password : function(name, value){
       var skeleton = {
-        type: "password", name : name
+        type: "password", name : name, value : value || ''
       };
       return this.input(skeleton);
     },
@@ -111,3 +131,4 @@ function Selectfy(name){
 		}
 	}
 }
+
