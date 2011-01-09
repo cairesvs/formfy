@@ -1,6 +1,6 @@
 function Formfy(){
   var form = document.createElement("form");
-  form.style.display = 'none';
+ // form.style.display = 'none';
 
   this.with = {
     attribute : function(name, value){
@@ -35,7 +35,7 @@ function Formfy(){
         value : "put"
       });
     },
-    delete : function(){
+    _delete : function(){
      return this.post().input({
         type : "_method",
         value : "delete"
@@ -132,3 +132,36 @@ function Selectfy(name){
 	}
 }
 
+function Objectfy(){
+  var fields = [];
+  var fieldOptions = [];
+
+  this.has = function(name){
+    fields.push({
+      type : 'text',
+      name : name,
+      id : name
+    });
+  }
+
+  this.is = function(name){
+    fields.push({
+      type : 'checkbox',
+      name : name,
+      id : name
+    });
+  }
+
+  this.canChoose = function(option){
+    new Selectfy(
+  }
+
+  this.for = function(name){
+    
+  }
+
+  this.done = function(){
+    return fields;
+  }
+
+}
