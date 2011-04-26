@@ -50,10 +50,12 @@ function Formfy(){
       for(var attribute in attributes){
         input.setAttribute(attribute, attributes[attribute]);
       }
-      var label = document.createElement("label");
-      label.setAttribute('for', input.id || "please_set_id_:D")
-      label.innerHTML = labelText;
-      form.appendChild(label);
+      if(labelText){
+       var label = document.createElement("label");
+       label.setAttribute('for', input.id || "please_set_id_:D")
+       label.innerHTML = labelText;
+       form.appendChild(label);
+      }
       form.appendChild(input);
       return this;
     },
