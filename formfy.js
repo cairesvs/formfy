@@ -45,13 +45,14 @@ function Formfy(){
       this.attribute("id", id);
       return this;
     },
-    input: function(attributes, label){
+    input: function(attributes, labelText){
       var input = document.createElement("input");
       for(var attribute in attributes){
         input.setAttribute(attribute, attributes[attribute]);
       }
       var label = document.createElement("label");
       label.setAttribute('for', input.id || "please_set_id_:D")
+      label.innerHTML = labelText;
       form.appendChild(label);
       form.appendChild(input);
       return this;
@@ -63,11 +64,11 @@ function Formfy(){
       }
       return this;
     },
-    text : function(name, value, id){
+    text : function(name, value, id, labelText){
       var skeleton = {
 	  type: "text", name : name, value : value || '' , id : id || ''
       };
-      return this.input(skeleton);
+      return this.input(skeleton, labelText);
     },
     checkbox : function(name, value){
       var skeleton = {
