@@ -45,11 +45,14 @@ function Formfy(){
       this.attribute("id", id);
       return this;
     },
-    input: function(attributes){
+    input: function(attributes, label){
       var input = document.createElement("input");
       for(var attribute in attributes){
         input.setAttribute(attribute, attributes[attribute]);
       }
+      var label = document.createElement("label");
+      label.setAttribute('for', input.id || "please_set_id_:D")
+      form.appendChild(label);
       form.appendChild(input);
       return this;
     },
@@ -60,9 +63,9 @@ function Formfy(){
       }
       return this;
     },
-    text : function(name, value){
+    text : function(name, value, id){
       var skeleton = {
-        type: "text", name : name, value : value || ''
+	  type: "text", name : name, value : value || '' , id : id || ''
       };
       return this.input(skeleton);
     },
@@ -96,6 +99,12 @@ function Formfy(){
       form.appendChild(selectfy.with.select());
       return this;
     },
+    hidden : function(name, value, id){
+      var skeleton = {
+	  type: "hidden", name : name, value : value || '' , id : id || '' 
+      };
+      return this.input(skeleton);
+    }
     done : function(){
       return form;
     }
