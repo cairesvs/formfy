@@ -105,7 +105,7 @@ function Formfy(){
 	  type: "hidden", name : name, value : value || '' , id : id || '' 
       };
       return this.input(skeleton);
-    }
+    },
     done : function(){
       return form;
     }
